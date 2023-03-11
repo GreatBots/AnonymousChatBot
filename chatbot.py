@@ -176,10 +176,10 @@ def search_partner(message):
                     add_second_user(first_id=sel[0], second_id=message.from_user.id)
                     user_info = get_info(user_id=sel[0])
                     bot.send_message(message.from_user.id,
-                                     "⚠️*Couple Found*⚠️\n\n*Age :* " + str(user_info[3])+" Year" + "\n*Gender :* " + str(user_info[4]),parse_mode="markdown", reply_markup=mark2)
+                                     "⚠️*Partner Found*⚠️\n\n*Age :* " + str(user_info[3])+" Year" + "\n*Gender :* " + str(user_info[4]),parse_mode="markdown", reply_markup=mark2)
                     user_info = get_info(user_id=message.from_user.id)
                     bot.send_message(sel[0],
-                                     "⚠️*Couple Found*⚠️\n\n*Age :* " + str(user_info[3])+" Year" + "\n*Gender :* " + str(user_info[4]),parse_mode="markdown", reply_markup=mark2)
+                                     "⚠️*Partner Found*⚠️\n\n*Age :* " + str(user_info[3])+" Year" + "\n*Gender :* " + str(user_info[4]),parse_mode="markdown", reply_markup=mark2)
                     success = True
                     break
         if not success:
@@ -195,7 +195,7 @@ def chat(message):
         mark1.add('📰 Info Profile', '🗑 Delete Profile')
         companion = check_companion(first_id=message.from_user.id)
         bot.send_message(message.from_user.id, "_You left the chat_",parse_mode="markdown", reply_markup=mark1)
-        bot.send_message(companion, "_Your Spouse Left the Conversation_", parse_mode="markdown", reply_markup=mark1)
+        bot.send_message(companion, "_Your Partner Left the Conversation_", parse_mode="markdown", reply_markup=mark1)
         close_chat(first_id=message.from_user.id)
         welcome(message)
         return
