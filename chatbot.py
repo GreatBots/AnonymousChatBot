@@ -42,7 +42,7 @@ def welcome(message):
         bot.send_message(message.from_user.id, f"*👋 Welcome to Join {BOT_NAME}*\n\n_Using This Bot You Can Meet Users And Chat Them Completely Anonymously!\n\nHope you get a friend or a mate_\n\n*🔥 JOIN @GlobalBotUpdates For Updates*",parse_mode="markdown",disable_web_page_preview=True, reply_markup=mark)
         bot.register_next_step_handler(message, search_prof)
     else:
-        bot.send_message(message.from_user.id, "_👋Hello New Users, To Continue Filling The Following Bio data!_",parse_mode="markdown")
+        bot.send_message(message.from_user.id, "_👋 Hello New Users, To Continue Filling The Following Bio data!_",parse_mode="markdown")
         bot.send_message(message.from_user.id, "➡️ *Your name :*", parse_mode="markdown")
         bot.register_next_step_handler(message, reg_name)
 
