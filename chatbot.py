@@ -36,7 +36,7 @@ user_dict = {}
 @bot.message_handler(commands=['startsentmestatusofthisbot'])
 def botstatusshow(message):
     if check_user(user_id=message.from_user.id)[0]:
-        bot.send_message(message.from_user.id, f"*Current Bot Status:*\n\nUsers: 510837\n\nTotal Conversations: 837892998",parse_mode="markdown",disable_web_page_preview=True)
+        bot.send_message(message.from_user.id, f"*Current Bot Status:*\n\nUsers: 513948\n\nTotal Conversations: 837999479",parse_mode="markdown",disable_web_page_preview=True)
         bot.register_next_step_handler(message, search_prof)
 
 @bot.message_handler(commands=['start'])
