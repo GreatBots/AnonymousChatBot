@@ -39,7 +39,7 @@ def welcome(message):
         mark = types.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
         mark.add('🔍 Find a Partner')
         mark.add('📰 Info Profile', '🗑 Delete Profile')
-        bot.send_message(message.from_user.id, f"*👋 Welcome to Join {BOT_NAME}*\n\n_Using This Bot You Can Meet Users And Chat Them Completely Anonymously!\n\nHope you get a friend or a mate_\n\n*🔥 JOIN @GlobalBotUpdates For Updates*",parse_mode="markdown",disable_web_page_preview=True, reply_markup=mark)
+        bot.send_message(message.from_user.id, f"*👋 Welcome to Join {BOT_NAME}*\n\nUsing This Bot You Can Meet Users And Chat Them Completely Anonymously!\n\nHope you get a friend or a mate\n\n🔥 Join @GlobalBotUpdates For Updates",parse_mode="markdown",disable_web_page_preview=True, reply_markup=mark)
         bot.register_next_step_handler(message, search_prof)
     else:
         bot.send_message(message.from_user.id, "_👋 Hello New Users, To Continue Filling The Following Bio data!_",parse_mode="markdown")
@@ -48,7 +48,7 @@ def welcome(message):
 
 @bot.message_handler(content_types=['text'])
 def text_reac(message):  
-    bot.send_message(message.chat.id, 'Error Occurred\nPlease click /start to try again')
+    bot.send_message(message.chat.id, 'Unknown Request\nPlease click /start to try again')
 
 def reg_name(message):  
     if message.text != '':
@@ -98,7 +98,7 @@ def reg_change(message):
         user.change = message.text
         date1 = datetime.fromtimestamp(message.date, tz=pytz.timezone("asia/jakarta")).strftime("%d/%m/%Y %H:%M:%S").split()
         bot.send_message(message.from_user.id,
-                         "🐱 - _YOUR BIO_ - 🐱\n\n*=> Nama :* " + str(user.name) + "\n*=> Age :* " + str(user.age)+" Year" + "\n*=> Gender :* " + str(user.sex) + "\n*=> Couple Type :* " + str(user.change)+ "\n*=> Register On :\n        >Ate :* "+str(date1[0])+"\n    *    >Time :* "+str(date1[1])+" WIB", parse_mode="markdown")
+                         "🐱 Your Details 🐱\n\n*=> Name :* " + str(user.name) + "\n*=> Age :* " + str(user.age)+" Year" + "\n*=> Gender :* " + str(user.sex) + "\n*=> Couple Type :* " + str(user.change)+ "\n*=> Register On :\n        >Ate :* "+str(date1[0])+"\n    *    >Time :* "+str(date1[1])+" WIB", parse_mode="markdown")
         markup = types.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
         markup.add('Yes ✔️', 'Not ✖️')
         bot.send_message(message.from_user.id, "`Want to change the data above??`",parse_mode="markdown", reply_markup=markup)
@@ -135,7 +135,7 @@ def search_prof(message):
         elif message.text == u'📰 Info Profile':
             user_info = get_info(user_id=message.from_user.id)
             bot.send_message(message.from_user.id,
-                             "📍Data Profile📍\n\n*Name :* " + str(user_info[2]) +"\n*ID :* `"+str(message.from_user.id)+"`" +"\n*Age :* " + str(
+                             "💯 Data Profile\n\n*Name :* " + str(user_info[2]) +"\n*ID :* `"+str(message.from_user.id)+"`" +"\n*Age :* " + str(
                                  user_info[3]) +" Year" + "\n*Gender :* " + str(user_info[4]) + "\n*Couple Type :* " + str(user_info[5]),parse_mode="markdown")
             mark = types.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
             mark.add('Yes ✔️', 'Not ✖️')
@@ -165,7 +165,7 @@ def search_partner(message):
         else:
             for sel in select:
                 if check_status(first_id=message.from_user.id, second_id=sel[0]) or message.from_user.id == sel[0]:
-                    print(message.from_user.id, 'Join @AsmSafone Bot Made By @AmiFutami')
+                    print(message.from_user.id, 'Join @GlobalBotUpdates')
                     continue
 
                 else:
@@ -176,10 +176,10 @@ def search_partner(message):
                     add_second_user(first_id=sel[0], second_id=message.from_user.id)
                     user_info = get_info(user_id=sel[0])
                     bot.send_message(message.from_user.id,
-                                     "⚠️*Partner Found*⚠️\n\n*Age :* " + str(user_info[3])+" Year" + "\n*Gender :* " + str(user_info[4]),parse_mode="markdown", reply_markup=mark2)
+                                     "⚠️*Partner Found*\n\n*Age :* " + str(user_info[3])+" Year" + "\n*Gender :* " + str(user_info[4]),parse_mode="markdown", reply_markup=mark2)
                     user_info = get_info(user_id=message.from_user.id)
                     bot.send_message(sel[0],
-                                     "⚠️*Partner Found*⚠️\n\n*Age :* " + str(user_info[3])+" Year" + "\n*Gender :* " + str(user_info[4]),parse_mode="markdown", reply_markup=mark2)
+                                     "⚠️*Partner Found*\n\n*Age :* " + str(user_info[3])+" Year" + "\n*Gender :* " + str(user_info[4]),parse_mode="markdown", reply_markup=mark2)
                     success = True
                     break
         if not success:
@@ -206,5 +206,5 @@ def chat(message):
     bot.send_message(companion, message.text)
     bot.register_next_step_handler(message, chat)
 
-print("BOT IS READY TO JOIN @AsmSafone")
+print("@GlobalBotUpdates")
 bot.polling()
